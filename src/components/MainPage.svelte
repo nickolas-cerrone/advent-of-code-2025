@@ -9,11 +9,9 @@
   let { setCurrentDay }: Props = $props();
 </script>
 
-<main>
-  <div>main page</div>
-  <nav>
-    {#each Array.from({ length: 12 }, (_, k) => k + 1) as d}
-      <NavItem day={d as Day} {setCurrentDay} />
-    {/each}
-  </nav>
-</main>
+<h1>Advent of Code 2025 Solutions</h1>
+<nav>
+  {#each Array.from({ length: 12 }, (_, k) => k + 1) as d}
+    <NavItem day={d as Day} {setCurrentDay} />
+  {/each}
+</nav>

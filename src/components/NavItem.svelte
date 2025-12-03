@@ -9,10 +9,8 @@
   let { day, setCurrentDay }: Props = $props();
 </script>
 
-<main>
-  <ol>
-    <li>
-      <a href={null} onclick={() => setCurrentDay(day)}>Day {day}</a>
-    </li>
-  </ol>
-</main>
+<ol>
+  <li>
+    <a href={null} onclick={() => setCurrentDay(day)}>Day {day}</a>
+  </li>
+</ol>
