@@ -1,5 +1,6 @@
 <script lang="ts" module>
   import DayOne from "./components/days/DayOne.svelte";
+  import DayTwo from "./components/days/DayTwo.svelte";
   import MainPage from "./components/MainPage.svelte";
 
   export type Day = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
@@ -17,7 +18,7 @@
   {:else if currentDay === 1}
     <DayOne />
   {:else if currentDay === 2}
-    <div>day 2</div>
+    <DayTwo />
   {:else if currentDay === 3}
     <div>day 3</div>
   {:else if currentDay === 4}
