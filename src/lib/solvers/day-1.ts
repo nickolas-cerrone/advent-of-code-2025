@@ -44,15 +44,7 @@ export function processInstructionPartOne(
     result = result + instruction.magnitude;
   }
 
-  while (result < MIN_NUM) {
-    // Loop negative numbers back around (-1 -> 99, -5 -> 95, etc)
-    result = result + MAX_NUM + 1;
-  }
-
-  while (result > MAX_NUM) {
-    // Bring big number back within range (100 -> 0, 105 -> 5)
-    result = result - MAX_NUM - 1;
-  }
+  result = ((result % 100) + 100) % 100;
 
   console.log(`results in ${result}`);
 
