@@ -201,6 +201,22 @@ describe("day 1 solver", () => {
       expected: 0,
       zeroCount: 1,
     },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 500,
+      },
+      expected: 0,
+      zeroCount: 5,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 520,
+      },
+      expected: 80,
+      zeroCount: 5,
+    },
   ];
 
   test("part 2: it processes instrunctions correctly", () => {

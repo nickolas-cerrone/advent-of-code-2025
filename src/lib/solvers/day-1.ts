@@ -28,6 +28,10 @@ function parseInstruction(stringInstruction: string): Instruction {
   };
 }
 
+function wrapPosition(position: number): number {
+  return ((position % 100) + 100) % 100;
+}
+
 export function processInstructionPartOne(
   currentNumber: number,
   instruction: Instruction
@@ -44,7 +48,7 @@ export function processInstructionPartOne(
     result = result + instruction.magnitude;
   }
 
-  result = ((result % 100) + 100) % 100;
+  result = wrapPosition(result);
 
   console.log(`results in ${result}`);
 
