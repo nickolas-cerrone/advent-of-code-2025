@@ -28,7 +28,7 @@ function parseInstruction(stringInstruction: string): Instruction {
   };
 }
 
-export function processInstruction(
+export function processInstructionPartOne(
   currentNumber: number,
   instruction: Instruction
 ): number {
@@ -66,7 +66,7 @@ export function getInstructionsFromFile(): Instruction[] {
     .map(parseInstruction);
 }
 
-export function solve(preloadedInstructions: Instruction[] | null) {
+export function solvePartOne(preloadedInstructions?: Instruction[]) {
   const instructions = preloadedInstructions
     ? preloadedInstructions
     : getInstructionsFromFile();
@@ -75,8 +75,73 @@ export function solve(preloadedInstructions: Instruction[] | null) {
   let result = 0;
 
   instructions.forEach((instruction) => {
-    currentNumber = processInstruction(currentNumber, instruction);
+    currentNumber = processInstructionPartOne(currentNumber, instruction);
     if (currentNumber === 0) result++;
+  });
+
+  return result;
+}
+
+interface PartTwoResult {
+  // the new number after processing
+  result: number;
+  // Number of times we hit 0 during processing
+  zeroCount: number;
+}
+
+export function processInstructionPartTwo(
+  currentNumber: number,
+  instruction: Instruction
+): PartTwoResult {
+  console.log(
+    `Turning ${currentNumber} ${instruction.magnitude} clicks ${instruction.direction}`
+  );
+  let clicksLeft = instruction.magnitude;
+  let result = currentNumber;
+  let zeroCount = 0;
+
+  while (clicksLeft > 0) {
+    if (instruction.direction === "L") {
+      result--;
+    } else {
+      result++;
+    }
+
+    if (result === 0) {
+      zeroCount++;
+    } else if (result === -1) {
+      result = 99;
+    } else if (result === 100) {
+      result = 0;
+      zeroCount++;
+    }
+
+    clicksLeft--;
+  }
+
+  console.log(`resulted in ${result} with ${zeroCount} 0s reached}`);
+
+  return {
+    result,
+    zeroCount,
+  };
+}
+
+export function solvePartTwo(preloadedInstructions?: Instruction[]): number {
+  const instructions = preloadedInstructions
+    ? preloadedInstructions
+    : getInstructionsFromFile();
+  let currentNumber = STARTING_NUMBER;
+  // the number of times we hit 0 (now including during instruction input)
+  let result = 0;
+
+  instructions.forEach((instruction) => {
+    const { result: resultNum, zeroCount } = processInstructionPartTwo(
+      currentNumber,
+      instruction
+    );
+    currentNumber = resultNum;
+    result += zeroCount;
   });
 
   return result;

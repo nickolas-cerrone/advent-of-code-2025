@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { solve } from "../../lib/solvers/day-1";
-  const solution = solve();
+  import { solvePartOne, solvePartTwo } from "../../lib/solvers/day-1";
+  const solutionOne = solvePartOne();
+  const solutionTwo = solvePartTwo();
 </script>
 
 <h1>Day 1 answer:</h1>
 
 <p>
-  Part 1: {solution}
+  Part 1: {solutionOne}
 </p>
-<p>Part 2: TODO</p>
+<p>Part 2: {solutionTwo}</p>
 
 <p>(see logs for more details)</p>
 

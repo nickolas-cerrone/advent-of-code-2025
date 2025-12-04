@@ -2,8 +2,9 @@ import { assert, describe, expect, expectTypeOf, test } from "vitest";
 
 import {
   getInstructionsFromFile,
-  processInstruction,
-  solve,
+  processInstructionPartOne,
+  processInstructionPartTwo,
+  solvePartOne,
   type Instruction,
 } from "./day-1";
 
@@ -21,7 +22,7 @@ describe("day 1 solver", () => {
     instruction: Instruction;
     expected: number;
   }
-  const INSTRUCTIONS_WITH_RESULTS: ProviderOne[] = [
+  const INSTRUCTIONS_WITH_RESULTS_PART_ONE: ProviderOne[] = [
     {
       instruction: {
         direction: "L",
@@ -80,11 +81,11 @@ describe("day 1 solver", () => {
     },
   ];
 
-  test("it processes instrunctions correctly", () => {
+  test("part 1: it processes instrunctions correctly", () => {
     let currentNumber = STARTING_NUMBER;
 
-    INSTRUCTIONS_WITH_RESULTS.forEach(({ instruction, expected }) => {
-      currentNumber = processInstruction(currentNumber, instruction);
+    INSTRUCTIONS_WITH_RESULTS_PART_ONE.forEach(({ instruction, expected }) => {
+      currentNumber = processInstructionPartOne(currentNumber, instruction);
       assert(currentNumber === expected);
     });
   });
@@ -124,8 +125,95 @@ describe("day 1 solver", () => {
     },
   ];
 
-  test("it correctly counts the number of times we reach 0", () => {
-    const solution = solve(INSTRUCITONS);
+  test("part 1: it correctly counts the number of times we reach 0", () => {
+    const solution = solvePartOne(INSTRUCITONS);
     assert(solution === 3);
+  });
+
+  interface ProviderTwo {
+    instruction: Instruction;
+    expected: number;
+    zeroCount: number;
+  }
+
+  const INSTRUCTIONS_WITH_RESULTS_PART_TWO: ProviderTwo[] = [
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 68,
+      },
+      expected: 82,
+      zeroCount: 1,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 30,
+      },
+      expected: 52,
+      zeroCount: 0,
+    },
+    {
+      instruction: {
+        direction: "R",
+        magnitude: 48,
+      },
+      expected: 0,
+      zeroCount: 1,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 5,
+      },
+      expected: 95,
+      zeroCount: 0,
+    },
+    {
+      instruction: {
+        direction: "R",
+        magnitude: 60,
+      },
+      expected: 55,
+      zeroCount: 1,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 55,
+      },
+      expected: 0,
+      zeroCount: 1,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 1,
+      },
+      expected: 99,
+      zeroCount: 0,
+    },
+    {
+      instruction: {
+        direction: "L",
+        magnitude: 99,
+      },
+      expected: 0,
+      zeroCount: 1,
+    },
+  ];
+
+  test("part 2: it processes instrunctions correctly", () => {
+    let currentNumber = STARTING_NUMBER;
+
+    INSTRUCTIONS_WITH_RESULTS_PART_TWO.forEach(
+      ({ instruction, expected, zeroCount }) => {
+        const { result, zeroCount: actualZeroCount } =
+          processInstructionPartTwo(currentNumber, instruction);
+        currentNumber = result;
+        assert(result === expected);
+        assert(zeroCount === actualZeroCount);
+      }
+    );
   });
 });
