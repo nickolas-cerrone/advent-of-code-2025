@@ -1,5 +1,3 @@
-const MIN_NUM = 0;
-const MAX_NUM = 99;
 const STARTING_NUMBER = 50;
 
 import input from "../../../advent-of-code-2025-inputs/day-one-input.txt?raw";

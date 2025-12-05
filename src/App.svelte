@@ -1,11 +1,14 @@
 <script lang="ts" module>
-  import DayOne from "./components/days/DayOne.svelte";
-  import DayTwo from "./components/days/DayTwo.svelte";
+  import DayPage from "./components/days/DayPage.svelte";
   import MainPage from "./components/MainPage.svelte";
+  import { getSolutionOneForDay, getSolutionTwoForDay } from "./lib/helpers";
 
   export type Day = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
   let currentDay = $state<Day | null>(null);
+
+  const solutionOne = $derived(getSolutionOneForDay(currentDay));
+  const solutionTwo = $derived(getSolutionTwoForDay(currentDay));
 
   function setCurrentDay(day: Day | null) {
     currentDay = day;
@@ -15,29 +18,7 @@
 <main>
   {#if currentDay === null}
     <MainPage {setCurrentDay} />
-  {:else if currentDay === 1}
-    <DayOne />
-  {:else if currentDay === 2}
-    <DayTwo />
-  {:else if currentDay === 3}
-    <div>day 3</div>
-  {:else if currentDay === 4}
-    <div>day 4</div>
-  {:else if currentDay === 5}
-    <div>day 5</div>
-  {:else if currentDay === 6}
-    <div>day 6</div>
-  {:else if currentDay === 7}
-    <div>day 7</div>
-  {:else if currentDay === 8}
-    <div>day 8</div>
-  {:else if currentDay === 9}
-    <div>day 9</div>
-  {:else if currentDay === 10}
-    <div>day 10</div>
-  {:else if currentDay === 11}
-    <div>day 11</div>
-  {:else if currentDay === 12}
-    <div>day 12</div>
+  {:else}
+    <DayPage dayNumber={currentDay} {solutionOne} {solutionTwo} />
   {/if}
 </main>

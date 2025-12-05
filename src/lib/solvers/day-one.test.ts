@@ -6,7 +6,7 @@ import {
   processInstructionPartTwo,
   solvePartOne,
   type Instruction,
-} from "./day-1";
+} from "./day-one";
 
 describe("day 1 solver", () => {
   test("it reads and parses the input correctly", () => {
