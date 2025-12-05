@@ -1,6 +1,6 @@
-import { assert, describe, expect, expectTypeOf, test } from "vitest";
+import { assert, describe, test } from "vitest";
 
-import { solvePartOne, solvePartTwo, validateIdPartTwo } from "./day-2";
+import { solvePartOne, solvePartTwo, validateIdPartTwo } from "./day-two";
 
 const testInput =
   "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124";
