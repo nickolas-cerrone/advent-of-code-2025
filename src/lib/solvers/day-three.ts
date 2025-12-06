@@ -1,4 +1,4 @@
-import input from "../../../advent-of-code-2025-inputs/day-three-input.txt?raw";
+import input from "../../../advent-of-code-2025-inputs/day-four-input.test.txt?raw";
 
 /************************************
  * TYPES
