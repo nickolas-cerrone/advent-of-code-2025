@@ -8,6 +8,10 @@ import {
   solvePartOne as twoOne,
   solvePartTwo as twoTwo,
 } from "./solvers/day-two";
+import {
+  solvePartOne as threeOne,
+  solvePartTwo as threeTwo,
+} from "./solvers/day-three";
 
 export function getSolutionOneForDay(day: Day | null): string | number | null {
   if (day === null) {
@@ -19,6 +23,8 @@ export function getSolutionOneForDay(day: Day | null): string | number | null {
       return oneOne();
     case 2:
       return twoOne();
+    case 3:
+      return threeOne();
     default:
       return "🎄NOT IMPLEMENTED🎄";
   }
@@ -34,6 +40,8 @@ export function getSolutionTwoForDay(day: Day | null): string | number | null {
       return oneTwo();
     case 2:
       return twoTwo();
+    case 3:
+      return threeTwo();
     default:
       return "🎄NOT IMPLEMENTED🎄";
   }
