@@ -26,6 +26,10 @@ function getParsedInput(input: string): Junction[] {
   return junctions;
 }
 
+export function getJunctions(): Junction[] {
+  return getParsedInput(input);
+}
+
 // Returns an array of junction pairs, sorted by straight line distance
 export function getSortedJunctionPairs(
   junctions: Junction[]
@@ -176,7 +180,7 @@ function joinJunctions(junctions: Junction[]): number {
     currentPairIndex++;
   }
 
-  return result;
+  return 0;
 }
 
 /************************************
