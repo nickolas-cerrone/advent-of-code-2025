@@ -30,8 +30,12 @@ import {
 } from "./solvers/day-seven";
 import {
   solvePartOne as eightOne,
-  // solvePartTwo as eightTwo,
+  solvePartTwo as eightTwo,
 } from "./solvers/day-eight";
+import {
+  solvePartOne as nineOne,
+  // solvePartTwo as nineTwo,
+} from "./solvers/day-nine";
 
 export function getSolutionOneForDay(day: Day | null): string | number | null {
   if (day === null) {
@@ -55,6 +59,8 @@ export function getSolutionOneForDay(day: Day | null): string | number | null {
       return sevenOne();
     case 8:
       return eightOne();
+    case 9:
+      return nineOne();
     default:
       return "🎄NOT IMPLEMENTED🎄";
   }
@@ -80,6 +86,10 @@ export function getSolutionTwoForDay(day: Day | null): string | number | null {
       return sixTwo();
     case 7:
       return sevenTwo();
+    case 8:
+      return eightTwo();
+    // case 9:
+    // return nineTwo();
     default:
       return "🎄NOT IMPLEMENTED🎄";
   }
